@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 using System.Linq;
 
 namespace Demo 
@@ -10,16 +12,16 @@ namespace Demo
 
         private User[] _users;
 
-        public UserDb()
+        private UserDb() { }
+        public static UserDb FromCode()
         {
-            _users = new User[] {
+            var userDb = new UserDb();
+
+            userDb._users = new User[] {
                 new User() {
                     FirstName = "Dude",
                     LastName = "Guy",
-                    ProfilePicture = new Picture() {
-                        Width = 256, Height = 256,
-                        URL = "http://placekitten.com/256/256"
-                    }
+                    ProfilePicture = "http://placekitten.com/256/256"
                 },
 
                 new User() {
@@ -34,6 +36,19 @@ namespace Demo
                     ProfilePicture = null
                 },
             };
+
+            return userDb;
+        }
+
+        public static UserDb FromFile(string filename)
+        {
+            var userDb = new UserDb();
+            
+            var users = JsonConvert.DeserializeObject<User[]>(File.ReadAllText(filename));
+
+            userDb._users = users;
+
+            return userDb;
         }
     }
 }
