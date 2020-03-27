@@ -12,45 +12,25 @@ namespace Demo
             var user = userDb.Users.FirstOrDefault();
 
             // What does our data look like
-            Console.WriteLine(user);
+            
             
             // Let's calculate an average score
-            Console.WriteLine($"Average Score: {CalculateAverage(user.Grades)}");
+            
 
             // Again but with Linq
-            Console.WriteLine($"Average Score: {user.Grades.Average()}");
+            
 
             // Transforming data
-            var setsOfGrades = userDb.Users.Select(x => x.Grades);
-            var studentAverages = setsOfGrades.Select(x => x.Average());
-
-            var highestAverage = studentAverages.Max();
-
-            Console.WriteLine($"The highest average is: {highestAverage}");
+            
             
             // Filtering lists
-            var usersWhoseNameStartsWithA = userDb.Users.Where(x => x.FirstName.ToLower().StartsWith('a'));
-
-            foreach(var aUser in usersWhoseNameStartsWithA)
-            {
-                Console.WriteLine(aUser);
-            }
+            
 
             // More advanced filtering
-            var gradeAStudents = userDb.Users.Where( x => x.Grades.Average() > 90);
-
-            foreach(var student in gradeAStudents)
-            {
-                Console.WriteLine(student);
-            }
+            
 
             // Sorting
-            var topStudent = userDb.Users
-                .OrderByDescending(x => x.Grades.Average())
-                .FirstOrDefault();
-
-            Console.WriteLine("Top of the Class is:");
-            Console.WriteLine(topStudent);
+            
             
             
             /*
