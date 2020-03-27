@@ -75,13 +75,3 @@ namespace Demo
         }
     }
 }
-
-/*
-Useful things you might not have seen
- -string interpolation $"{}"
- -string literals with @
- -nullable types (struct as example?)
- -null propagation
- -null coalescing
- -is/aa
-*/
